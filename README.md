@@ -1,5 +1,5 @@
 # Running D2F Queries in with Hawq
-##Prerequisites:
+##Setup run-environment
 Option 1: Docker
 
 To be able to use Hawq with Docker you just have to follow the instructions on `https://hub.docker.com/r/mayjojo/hawq-devel`, which has a virtual machine version of Centos 6 / 7 with most necessary dependencies already pre-installed:
@@ -44,17 +44,17 @@ Inside der virt. Maschine:
 
 4. Next, execute the following commands to make Hawq know about the name- and datanodes:
 
-sed 's|localhost|centos7-namenode|g' -i /data/hawq-devel/etc/hawq-site.xml
-echo 'centos7-datanode1' > /data/hawq-devel/etc/slaves
-echo 'centos7-datanode2' >> /data/hawq-devel/etc/slaves
-echo 'centos7-datanode3' >> /data/hawq-devel/etc/slaves 
+`sed 's|localhost|centos7-namenode|g' -i /data/hawq-devel/etc/hawq-site.xml`
+`echo 'centos7-datanode1' > /data/hawq-devel/etc/slaves`
+`echo 'centos7-datanode2' >> /data/hawq-devel/etc/slaves`
+`echo 'centos7-datanode3' >> /data/hawq-devel/etc/slaves` 
 
-5. To be able to initialise Hawq execute `source /data/hawq-devel/greenplum_path.sh` to make the console be able to find Hawq
+5.To be able to initialise Hawq execute `source /data/hawq-devel/greenplum_path.sh` to make the console be able to find Hawq
 
-6. Execute the following commands to finalise initialisation of Hawq and create a database to work on: 
+6.Execute the following commands to finalise initialisation of Hawq and create a database to work on: 
 
-hawq init cluster 
-createdb 
+`hawq init cluster` 
+`createdb `
 
 7.You can now use psql to access Hawq 
 
