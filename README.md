@@ -18,9 +18,10 @@ Just install the depencies listed here https://cwiki.apache.org/confluence/displ
 If you are using CentOS 7.X you can use the yum install option.
 
 Installing Hive:
-1. Follow either the instructions on the Hive-homepage to install through the command line (https://cwiki.apache.org/confluence/display/Hive/GettingStarted), or just download from http://www.us.apache.org/dist/hive/stable/ the newest stable release to your host-system and copy it into your virtual machine with `docker cp [OPTIONS] SRC_PATH | - CONTAINER:DEST_PATH`
+1. For Option 1: download from http://www.us.apache.org/dist/hive/stable/ the newest stable release to your host-system and copy it into your virtual machine with `docker cp [OPTIONS] SRC_PATH | - CONTAINER:DEST_PATH`
+2. For Option 2: Follow the instructions on the Hive-homepage(https://cwiki.apache.org/confluence/display/Hive/GettingStarted) to install through the command line 
 
-2. Include Hive in the virtual machine's PATH-variable
+3. Include Hive in the virtual machine's PATH-variable
 
 Installing and generating data / running queries with D2F-Bench: 
 
@@ -35,7 +36,7 @@ Else use https://cwiki.apache.org/confluence/display/HAWQ/Build+and+Install
 
 Accessing Data on HDFS:
 
-There are multiple ways to access data on HDFS as there are multiple protocols to use with psql and external tables. PXF and gphdfs should both be able to access HDFS data in its entirety, but for some undiscernable reason, both of which failed in our particular cases to work or even be recognized as an installed protocol.
+There are multiple ways to access data on HDFS as there are multiple protocols to use with psql and external tables. PXF and gphdfs should both be able to access HDFS data in its entirety, but for some undiscernable reason, both of them failed in our particular cases to work or even be recognized as an installed protocol.
 If you're having issues using PXF or installing gphdfs yourself, here are the instructions on how to use gpfdist to access the generated data through your local file system (uses lots of space because the data is deflated first):
 
 1. If the files are still compressed, decompress  them with: `sudo -u hdfs hdfs dfs -text /hdfs_path/to/file.deflate | sudo -u hdfs hdfs dfs -put – /hdfs_path/to/decompressed_file`
