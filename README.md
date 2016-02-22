@@ -36,13 +36,13 @@ For docker use the instructions on https://hub.docker.com/r/mayjojo/hawq-devel/ 
 
 Inside der virt. Maschine:
 
-1. To download Hawq, use the command: git clone https://github.com/apache/incubator-hawq.git /data/hawq
+1.To download Hawq, use the command: git clone https://github.com/apache/incubator-hawq.git /data/hawq
 
-2. Go inside the newly created folder and execute the command: ./configure --prefix=/data/hawq-devel  
+2.Go inside the newly created folder and execute the command: ./configure --prefix=/data/hawq-devel  
 
-3. Execute make and make install to install Hawq 
+3.Execute make and make install to install Hawq 
 
-4. Next, execute the following commands to make Hawq know about the name- and datanodes:
+4.Next, execute the following commands to make Hawq know about the name- and datanodes:
 
 `sed 's|localhost|centos7-namenode|g' -i /data/hawq-devel/etc/hawq-site.xml`
 
@@ -57,6 +57,7 @@ Inside der virt. Maschine:
 6.Execute the following commands to finalise initialisation of Hawq and create a database to work on: 
 
 `hawq init cluster` 
+
 `createdb `
 
 7.You can now use psql to access Hawq 
