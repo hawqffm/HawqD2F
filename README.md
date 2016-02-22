@@ -47,13 +47,13 @@ If you're having issues using PXF or installing gphdfs yourself, here are the in
 
 
 ##Creating External Tables and running queries on Hawq:
-First you need to create external tables with the protocol you want to use. Note that some datatypes cant be ported 1:1 and have to be edited. Refer to http://hawq.docs.pivotal.io/docs-hawq/topics/HAWQDataTypes.html to see how. The tables in the Tables.txt are already edited in such manner.
+First you need to create external tables with the protocol you want to use. Note that some datatypes can't be ported 1:1 and have to be edited. Refer to http://hawq.docs.pivotal.io/docs-hawq/topics/HAWQDataTypes.html to see how. The tables in the Tables.txt are already edited in such manner.
 
 PXF: Refer to http://hawq.docs.pivotal.io/docs-hawq/topics/PXFExternalTableandAPIReference.html.
 
-You can use the `CREATE EXTERNAL TABLE ..` commands from the tables.txt if you edit the the location path.
+You can use the `CREATE EXTERNAL TABLE ..` commands from the Tables.txt if you edit the the location path.
 
 For gpfdist (http://hawq.docs.pivotal.io/docs-hawq/docs-hawq-shared/admin_guide/load/topics/g-gpfdist-protocol.html)
 
-You can also use the `CREATE EXTERNAL TABLE ..` commands from the tables.txt. Note that you have to deflate your files first and edit the path according to where your deflated files are saved.
+You can also use the `CREATE EXTERNAL TABLE ..` commands from the Tables.txt. Note that you have to deflate your files first and edit the path according to where your deflated files are saved.
 
