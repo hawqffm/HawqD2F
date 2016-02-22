@@ -51,8 +51,9 @@ First you need to create external tables with the protocol you want to use. Note
 
 PXF: Refer to http://hawq.docs.pivotal.io/docs-hawq/topics/PXFExternalTableandAPIReference.html.
 
-You can use the `CREATE EXTERNAL TABLE ..` commands from the tables.txt if you edit the the Location path according to your needs. 
+You can use the `CREATE EXTERNAL TABLE ..` commands from the tables.txt if you edit the the location path.
 
-gpfdist: (For this you have to have the deflated files on your harddrive, refer to above):
+For gpfdist (http://hawq.docs.pivotal.io/docs-hawq/docs-hawq-shared/admin_guide/load/topics/g-gpfdist-protocol.html)
 
-Edit the location path `CREATE EXTERNAL TABLE ..` commands from the tables.txt 
+You can also use the `CREATE EXTERNAL TABLE ..` commands from the tables.txt. Note that you have to deflate your files first and edit the path according to where your deflated files are saved.
+
