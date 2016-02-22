@@ -18,7 +18,9 @@ Just install the depencies listed here https://cwiki.apache.org/confluence/displ
 If you are using CentOS 7.X you can use the yum install option.
 
 Installing Hive:
+
 1. For Option 1: download from http://www.us.apache.org/dist/hive/stable/ the newest stable release to your host-system and copy it into your virtual machine with `docker cp [OPTIONS] SRC_PATH | - CONTAINER:DEST_PATH`
+
 2. For Option 2: Follow the instructions on the Hive-homepage(https://cwiki.apache.org/confluence/display/Hive/GettingStarted) to install through the command line 
 
 3. Include Hive in the virtual machine's PATH-variable
