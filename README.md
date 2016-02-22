@@ -1,12 +1,14 @@
 # Running D2F Queries in with Hawq
 ##Prerequisites:
 Option 1: Docker
+
 To be able to use Hawq with Docker you just have to follow the instructions on `https://hub.docker.com/r/mayjojo/hawq-devel`, which has a virtual machine version of Centos 6 / 7 with most necessary dependencies already pre-installed:
 
-1.: Install Docker and allow Docker to use your network so that it can later use your internet connection (instructions for your specific Linux distribution can be found on https://docs.docker.com/ under the Docker Engine > Install > On Linux distributions tab)
-3.:Use command: `git clone https://github.com/wangzw/hawq-devel-env.git` to download the virtual machine
-4.:Go into the newly created folder and execute the makefile with make run
-5.:Afterwards, use `docker exec -it centos7-namenode bash´ to enter the bash environment of your newly created virtual machine
+1. Install Docker 
+Allow Docker to use your network so that it can later use your internet connection (instructions for your specific Linux distribution can be found on https://docs.docker.com/ under the Docker Engine > Install > On Linux distributions tab) 
+2.Use command: `git clone https://github.com/wangzw/hawq-devel-env.git` to download the virtual machine
+3.Go into the newly created folder and execute the makefile with make run
+4.Afterwards, use `docker exec -it centos7-namenode bash´ to enter the bash environment of your newly created virtual machine
 
 The next few things left are installing Hive, D2F-Bench and Hawq:
 
