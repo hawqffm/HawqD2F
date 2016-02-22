@@ -30,15 +30,15 @@ Installing and generating data / running queries with D2F-Bench:
 Just follow the instructions on https://github.com/t-ivanov/D2F-Bench inside the virtual machine, as there is nothing different about the installation when using the docker environment. The only thing we have changed was in the config file later on the filetype of our generated data (we chose to use simple textfiles). Anything else is just as described on the github page.
 
 
-##Installing HAWQ:
+##Installing Hawq and data preparation
 
 For docker use the instructions on https://hub.docker.com/r/mayjojo/hawq-devel/ to install Hawq.
 
 Else use https://cwiki.apache.org/confluence/display/HAWQ/Build+and+Install
 
-Accessing Data on HDFS:
+Accessing data on HDFS:
 
-There are multiple ways to access data on HDFS as there are multiple protocols to use with psql and external tables. PXF and gphdfs should both be able to access HDFS data in its entirety, but for some undiscernable reason, both of them failed in our particular cases to work or even be recognized as an installed protocol.
+There are multiple ways to access data on HDFS as there are multiple protocols to use with psql and external tables. PXF and gphdfs should both be able to access HDFS data in its entirety and therefore don't need a special preparation. For some undiscernable reason, both of them failed in our particular cases to work or even be recognized as an installed protocol.
 If you're having issues using PXF or installing gphdfs yourself, here are the instructions on how to use gpfdist to access the generated data through your local file system (uses lots of space because the data is decompressed first):
 
 1. Decompress .deflate-files with: `sudo -u hdfs hdfs dfs -text /hdfs_path/to/file.deflate | sudo -u hdfs hdfs dfs -put – /hdfs_path/to/decompressed_file`
@@ -46,7 +46,7 @@ If you're having issues using PXF or installing gphdfs yourself, here are the in
 3. Before creating an external table in psql, because you are using gpfdist, the gpfdist server program has to be running and listening to the correct port. You can ensure this by using `gpfdist -p 8081 -d /var/data/staging -l /home/gpadmin/log &`
 
 
-##Creating External Tables and running queries on Hawq:
+##Creating external tables and running queries:
 First you need to create external tables with the protocol you want to use. Note that some datatypes can't be ported 1:1 and have to be edited. Refer to http://hawq.docs.pivotal.io/docs-hawq/topics/HAWQDataTypes.html to see how. The tables in the Tables.txt are already edited in such manner.
 
 PXF: Refer to http://hawq.docs.pivotal.io/docs-hawq/topics/PXFExternalTableandAPIReference.html.
@@ -57,6 +57,8 @@ For gpfdist (http://hawq.docs.pivotal.io/docs-hawq/docs-hawq-shared/admin_guide/
 
 You can also use the `CREATE EXTERNAL TABLE ..` commands from the Tables.txt. Note that you also have to edit the location path.
 e.g. `LOCATION ('gpfdist://centos7-namenode:8081/lineitem/datatext')`
+
+After your created the external tables you can check with a simple `Select * from <table>` if the creation was successfull. If for some reason the creation fails try to add an empty column to every table. e.g.  `L_COMMENT TEXT, L_NOTHING TEXT)` for lineitem. 
 
 The queries of D2F-Bench are already modified in a manner to work with psql, see the .sql files in the queries folder. If they dont work try to modify them yourself, note that the datatypes have been modified also.
 To run the queries in the psql prompt use `\i /path/to/file.sql` or simply copy the queries over.
