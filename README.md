@@ -12,13 +12,10 @@ To be able to use Hawq with Docker you just have to follow the instructions on `
 
 4. Afterwards, use `docker exec -it centos7-namenode bash` to enter the bash environment of your newly created virtual machine
 
-The next few things left are installing Hive, D2F-Bench and Hawq:
-
 Option 2: Installing the depencies yourself
 
 Just install the depencies listed here https://cwiki.apache.org/confluence/display/HAWQ/Build+and+Install under "Compile Depencies"
 If you are using CentOS 7.X you can use the yum install option.
-
 
 Installing Hive:
 1. Follow either the instructions on the Hive-homepage to install through the command line (https://cwiki.apache.org/confluence/display/Hive/GettingStarted), or just download from http://www.us.apache.org/dist/hive/stable/ the newest stable release to your host-system and copy it into your virtual machine with `docker cp [OPTIONS] SRC_PATH | - CONTAINER:DEST_PATH`
@@ -33,15 +30,17 @@ Just follow the instructions on https://github.com/t-ivanov/D2F-Bench inside the
 ##Installing HAWQ:
 
 For docker use the instructions on https://hub.docker.com/r/mayjojo/hawq-devel/ to install Hawq.
+
 Else use https://cwiki.apache.org/confluence/display/HAWQ/Build+and+Install
 
 Accessing Data on HDFS:
 
-There are multiple ways to access data on HDFS as there are multiple protocols to use with psql and external tables. PXF and gphdfs should both be able to access HDFS data in its entirety, but for some undiscernable reason, both of which failed in our particular cases to work or even be recognized as an installed protocol. As such, we had to resort to downloading our generated data off of HDFS to the local file system. If you're having issues using PXF or installing gphdfs yourself, here are the instructions on how to use gpfdist to access the generated data:
+There are multiple ways to access data on HDFS as there are multiple protocols to use with psql and external tables. PXF and gphdfs should both be able to access HDFS data in its entirety, but for some undiscernable reason, both of which failed in our particular cases to work or even be recognized as an installed protocol.
+If you're having issues using PXF or installing gphdfs yourself, here are the instructions on how to use gpfdist to access the generated data through your local file system (uses lots of space because the data is deflated first):
 
-1.: If the files are still compressed, decompress  them with the command: sudo -u hdfs hdfs dfs -text /hdfs_path/to/file.deflate | sudo -u hdfs hdfs dfs -put – /hdfs_path/to/decompressed_file
-2.: To download the data from HDFS to your local file system, use the command: sudo hadoop fs -get /hdfs_path/to/decompressed_file /local_path/to/local_file
-3.: Before creating an External Table in psql, because we are using gpfdist, the gpfdist server program has to be running and listening to the correct port. You can ensure this by using the command: gpfdist -p 8081 -d /var/data/staging -l /home/gpadmin/log &
+1. If the files are still compressed, decompress  them with: `sudo -u hdfs hdfs dfs -text /hdfs_path/to/file.deflate | sudo -u hdfs hdfs dfs -put – /hdfs_path/to/decompressed_file`
+2. To download the data from HDFS to your local file system, use `sudo hadoop fs -get /hdfs_path/to/decompressed_file /local_path/to/local_file`
+3. Before creating an External Table in psql, because you are using gpfdist, the gpfdist server program has to be running and listening to the correct port. You can ensure this by using `gpfdist -p 8081 -d /var/data/staging -l /home/gpadmin/log &`
 
 
 ##Creating External Tables and running queries on Hawq:
