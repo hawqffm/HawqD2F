@@ -32,35 +32,8 @@ Just follow the instructions on https://github.com/t-ivanov/D2F-Bench inside the
 
 ##Installing HAWQ:
 
-For docker use the instructions on https://hub.docker.com/r/mayjojo/hawq-devel/ to install Hawq:
-
-Inside der virt. Maschine:
-
-1.To download Hawq, use the command: git clone https://github.com/apache/incubator-hawq.git /data/hawq
-
-2.Go inside the newly created folder and execute the command: ./configure --prefix=/data/hawq-devel  
-
-3.Execute make and make install to install Hawq 
-
-4.Next, execute the following commands to make Hawq know about the name- and datanodes:
-
-`sed 's|localhost|centos7-namenode|g' -i /data/hawq-devel/etc/hawq-site.xml`
-
-`echo 'centos7-datanode1' > /data/hawq-devel/etc/slaves`
-
-`echo 'centos7-datanode2' >> /data/hawq-devel/etc/slaves`
-
-`echo 'centos7-datanode3' >> /data/hawq-devel/etc/slaves` 
-
-5.To be able to initialise Hawq execute `source /data/hawq-devel/greenplum_path.sh` to make the console be able to find Hawq
-
-6.Execute the following commands to finalise initialisation of Hawq and create a database to work on: 
-
-`hawq init cluster` 
-
-`createdb `
-
-7.You can now use psql to access Hawq 
+For docker use the instructions on https://hub.docker.com/r/mayjojo/hawq-devel/ to install Hawq.
+Else use https://cwiki.apache.org/confluence/display/HAWQ/Build+and+Install
 
 Accessing Data on HDFS:
 
