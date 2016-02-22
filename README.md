@@ -45,8 +45,11 @@ Inside der virt. Maschine:
 4. Next, execute the following commands to make Hawq know about the name- and datanodes:
 
 `sed 's|localhost|centos7-namenode|g' -i /data/hawq-devel/etc/hawq-site.xml`
+
 `echo 'centos7-datanode1' > /data/hawq-devel/etc/slaves`
+
 `echo 'centos7-datanode2' >> /data/hawq-devel/etc/slaves`
+
 `echo 'centos7-datanode3' >> /data/hawq-devel/etc/slaves` 
 
 5.To be able to initialise Hawq execute `source /data/hawq-devel/greenplum_path.sh` to make the console be able to find Hawq
