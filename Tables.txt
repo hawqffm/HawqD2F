@@ -1,5 +1,5 @@
 
-create external table hawqsql.lineitem 
+create external table ineitem 
 (L_ORDERKEY BIGINT,
  L_PARTKEY INT,
  L_SUPPKEY INT,
@@ -21,7 +21,7 @@ LOCATION ('protocol://host:port/location')
 FORMAT 'TEXT' (DELIMITER '|');
 
 
-create external table hawqsql.part (P_PARTKEY INT,
+create external table part (P_PARTKEY INT,
  P_NAME TEXT,
  P_MFGR TEXT,
  P_BRAND TEXT,
@@ -34,7 +34,7 @@ create external table hawqsql.part (P_PARTKEY INT,
 LOCATION ('protocol://host:port/location')
 FORMAT 'TEXT' (DELIMITER '|');
 
-create external table hawqsql.supplier (S_SUPPKEY INT,
+create external table supplier (S_SUPPKEY INT,
  S_NAME TEXT,
  S_ADDRESS TEXT,
  S_NATIONKEY INT,
@@ -45,7 +45,7 @@ create external table hawqsql.supplier (S_SUPPKEY INT,
 LOCATION ('protocol://host:port/location')
 FORMAT 'TEXT' (DELIMITER '|');
 
-create external table hawqsql.partsupp (PS_PARTKEY INT,
+create external table partsupp (PS_PARTKEY INT,
  PS_SUPPKEY INT,
  PS_AVAILQTY INT,
  PS_SUPPLYCOST DOUBLE PRECISION,
@@ -54,7 +54,7 @@ create external table hawqsql.partsupp (PS_PARTKEY INT,
 LOCATION ('protocol://host:port/location')
 FORMAT 'TEXT' (DELIMITER '|');
 
-create external table hawqsql.nation (N_NATIONKEY INT,
+create external table nation (N_NATIONKEY INT,
  N_NAME TEXT,
  N_REGIONKEY INT,
  N_COMMENT TEXT,
@@ -70,7 +70,7 @@ create external table region (R_REGIONKEY INT,
 LOCATION ('protocol://host:port/location')
 FORMAT 'TEXT' (DELIMITER '|');
 
-create external table hawqsql.customer (C_CUSTKEY INT,
+create external table customer (C_CUSTKEY INT,
  C_NAME TEXT,
  C_ADDRESS TEXT,
  C_NATIONKEY INT,
@@ -83,7 +83,7 @@ LOCATION ('protocol://host:port/location')
 FORMAT 'TEXT' (DELIMITER '|');
 
 
-create external table hawqsql.orders (O_ORDERKEY INT,
+create external table orders (O_ORDERKEY INT,
  O_CUSTKEY BIGINT,
  O_ORDERSTATUS TEXT,
  O_TOTALPRICE DOUBLE PRECISION,
