@@ -55,7 +55,7 @@ You can use the `CREATE EXTERNAL TABLE ..` commands from the Tables.txt if you e
 
 For gpfdist (http://hawq.docs.pivotal.io/docs-hawq/docs-hawq-shared/admin_guide/load/topics/g-gpfdist-protocol.html)
 
-You can also use the `CREATE EXTERNAL TABLE ..` commands from the Tables.txt. Note that you have to deflate your files first and edit the path according to where your deflated files are saved.
+You can also use the `CREATE EXTERNAL TABLE ..` commands from the Tables.txt. Note that you also have to edit the location path and use this on the decompressed data.
 
 The queries of D2F-Bench are already modified in a manner to work with psql, see the .sql files in the queries folder. If they dont work try to modify them yourself, note that the datatypes have been modified also.
 To run the queries in the psql prompt use `\i /path/to/file.sql` or simply copy the queries over.
