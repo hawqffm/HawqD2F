@@ -1,5 +1,5 @@
 
-create external table ineitem 
+create external table Lineitem 
 (L_ORDERKEY BIGINT,
  L_PARTKEY INT,
  L_SUPPKEY INT,
@@ -15,8 +15,7 @@ create external table ineitem
  L_RECEIPTDATE TEXT,
  L_SHIPINSTRUCT TEXT,
  L_SHIPMODE TEXT,
- L_COMMENT TEXT,
- L_NOTHING TEXT)
+ L_COMMENT TEXT)
 LOCATION ('protocol://host:port/location')
 FORMAT 'TEXT' (DELIMITER '|');
 
@@ -29,8 +28,7 @@ create external table part (P_PARTKEY INT,
  P_SIZE INT,
  P_CONTAINER TEXT,
  P_RETAILPRICE DOUBLE PRECISION,
- P_COMMENT TEXT,
- P_NOTHING TEXT)
+ P_COMMENT TEXT)
 LOCATION ('protocol://host:port/location')
 FORMAT 'TEXT' (DELIMITER '|');
 
@@ -40,8 +38,7 @@ create external table supplier (S_SUPPKEY INT,
  S_NATIONKEY INT,
  S_PHONE TEXT,
  S_ACCTBAL DOUBLE PRECISION,
- S_COMMENT TEXT,
- S_NOTHING TEXT)
+ S_COMMENT TEXT)
 LOCATION ('protocol://host:port/location')
 FORMAT 'TEXT' (DELIMITER '|');
 
@@ -49,24 +46,21 @@ create external table partsupp (PS_PARTKEY INT,
  PS_SUPPKEY INT,
  PS_AVAILQTY INT,
  PS_SUPPLYCOST DOUBLE PRECISION,
- PS_COMMENT TEXT,
- PS_NOTHING TEXT)
+ PS_COMMENT TEXT)
 LOCATION ('protocol://host:port/location')
 FORMAT 'TEXT' (DELIMITER '|');
 
 create external table nation (N_NATIONKEY INT,
  N_NAME TEXT,
  N_REGIONKEY INT,
- N_COMMENT TEXT,
- N_NOTHING TEXT)
+ N_COMMENT TEXT)
 LOCATION ('protocol://host:port/location')
 FORMAT 'TEXT' (DELIMITER '|');
 
 
 create external table region (R_REGIONKEY INT,
  R_NAME TEXT,
- R_COMMENT TEXT,
- R_NOTHING TEXT)
+ R_COMMENT TEXT)
 LOCATION ('protocol://host:port/location')
 FORMAT 'TEXT' (DELIMITER '|');
 
@@ -77,8 +71,7 @@ create external table customer (C_CUSTKEY INT,
  C_PHONE TEXT,
  C_ACCTBAL DOUBLE PRECISION,
  C_MKTSEGMENT TEXT,
- C_COMMENT TEXT,
- C_NOTHING TEXT)
+ C_COMMENT TEXT)
 LOCATION ('protocol://host:port/location')
 FORMAT 'TEXT' (DELIMITER '|');
 
@@ -91,7 +84,6 @@ create external table orders (O_ORDERKEY INT,
  O_ORDERPRIORITY TEXT,
  O_CLERK TEXT,
  O_SHIPPRIORITY INT,
- O_COMMENT TEXT,
- O_NOTHING TEXT)
+ O_COMMENT TEXT)
 LOCATION ('protocol://host:port/location')
 FORMAT 'TEXT' (DELIMITER '|');
