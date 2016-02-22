@@ -1,5 +1,5 @@
 
-create external table Lineitem 
+create external table lineitem 
 (L_ORDERKEY BIGINT,
  L_PARTKEY INT,
  L_SUPPKEY INT,
