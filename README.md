@@ -39,11 +39,11 @@ Else use https://cwiki.apache.org/confluence/display/HAWQ/Build+and+Install
 Accessing Data on HDFS:
 
 There are multiple ways to access data on HDFS as there are multiple protocols to use with psql and external tables. PXF and gphdfs should both be able to access HDFS data in its entirety, but for some undiscernable reason, both of them failed in our particular cases to work or even be recognized as an installed protocol.
-If you're having issues using PXF or installing gphdfs yourself, here are the instructions on how to use gpfdist to access the generated data through your local file system (uses lots of space because the data is deflated first):
+If you're having issues using PXF or installing gphdfs yourself, here are the instructions on how to use gpfdist to access the generated data through your local file system (uses lots of space because the data is decompressed first):
 
-1. If the files are still compressed, decompress  them with: `sudo -u hdfs hdfs dfs -text /hdfs_path/to/file.deflate | sudo -u hdfs hdfs dfs -put – /hdfs_path/to/decompressed_file`
+1. Decompress .deflate-files with: `sudo -u hdfs hdfs dfs -text /hdfs_path/to/file.deflate | sudo -u hdfs hdfs dfs -put – /hdfs_path/to/decompressed_file`
 2. To download the data from HDFS to your local file system, use `sudo hadoop fs -get /hdfs_path/to/decompressed_file /local_path/to/local_file`
-3. Before creating an External Table in psql, because you are using gpfdist, the gpfdist server program has to be running and listening to the correct port. You can ensure this by using `gpfdist -p 8081 -d /var/data/staging -l /home/gpadmin/log &`
+3. Before creating an external table in psql, because you are using gpfdist, the gpfdist server program has to be running and listening to the correct port. You can ensure this by using `gpfdist -p 8081 -d /var/data/staging -l /home/gpadmin/log &`
 
 
 ##Creating External Tables and running queries on Hawq:
